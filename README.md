@@ -1,10 +1,14 @@
-# TGPKernel
-Custom Kernel for Samsung Galaxy S7 / S7 Edge
+# TGPKernel S7
+A Custom Kernel for Samsung Galaxy S7 / S7 Edge, designed to be used with the TGP Custom ROM. 
+The main purpose of this Kernel is to have a stock-like Kernel that runs on G930x (S7) 
+variants, but capable of running the G935x (S7 Edge) Firmware. 
+
 
 ## How to use
 - Adjust the toolchain path in build.sh and Makefile to match the path on your system. 
-- Run build.sh and select 1 for S7 or 2 for S7 Edge
-- When finished, the new .img file will be created in either build-s7 or build-s7edge directory
+- Run build.sh and follow the prompts.
+- When finished, the new .img or .zip file will be created in the build directory.
+- If Java is installed, the .zip files will be automatically signed.
 
 
 ## Thanks to the following:
@@ -22,6 +26,7 @@ Custom Kernel for Samsung Galaxy S7 / S7 Edge
 - Updated Samsung source to G930FXXU1BPHJ
 - Updated Linux source to 3.18.42
 - Updated Ramdisk to G935FXXU1BPIF
+- Added regmap_bulk_read fix
 
 ### v1.00 - 2016-09-15
 - Initial Relase
@@ -40,5 +45,4 @@ Custom Kernel for Samsung Galaxy S7 / S7 Edge
 - Disabled Secure Storage
 - Enabled Lockup Detector
 - Enabled rw for /system
-
 
