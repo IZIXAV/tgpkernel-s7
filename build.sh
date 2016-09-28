@@ -1,12 +1,12 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 v0.4 (optimized from apq8084 kernel source)
 # Modified by djb77 / XDA Developers
-# TGPKernel Script Version: v2.01
+# TGPKernel Script Version: v2.02
 
 # ---------
 # VARIABLES
 # ---------
-BUILD_SCRIPT=2.01
+BUILD_SCRIPT=2.02
 VERSION_NUMBER=$(<build/version)
 ARCH=arm64
 BUILD_CROSS_COMPILE=~/android/toolchains/aarch64-sabermod-7.0/bin/aarch64-
@@ -28,28 +28,27 @@ FUNC_CLEAN()
 echo "Cleaning Workspace"
 make clean
 make ARCH=arm64 distclean
-[ -f "$RDIR/build.log" ] && rm -f $RDIR/build.log
-[ -f "$RDIR/build/ramdisk/g930x/image-new.img" ] && rm -f $RDIR/build/ramdisk/g930x/image-new.img
-[ -f "$RDIR/build/ramdisk/g930x/ramdisk-new.cpio.gz" ] && rm -f $RDIR/build/ramdisk/g930x/ramdisk-new.cpio.gz
-[ -f "$RDIR/build/ramdisk/g930x/split_img/boot.img-dtb" ] && rm -f $RDIR/build/ramdisk/g930x/split_img/boot.img-dtb
-[ -f "$RDIR/build/ramdisk/g930x/split_img/boot.img-zImage" ] && rm -f $RDIR/build/ramdisk/g930x/split_img/boot.img-zImage
-[ -f "$RDIR/build/ramdisk/g935x/image-new.img" ] && rm -f $RDIR/build/ramdisk/g930x/image-new.img
-[ -f "$RDIR/build/ramdisk/g935x/ramdisk-new.cpio.gz" ] && rm -f $RDIR/build/ramdisk/g935x/ramdisk-new.cpio.gz
-[ -f "$RDIR/build/ramdisk/g935x/split_img/boot.img-dtb" ] && rm -f $RDIR/build/ramdisk/g935x/split_img/boot.img-dtb
-[ -f "$RDIR/build/ramdisk/g935x/split_img/boot.img-zImage" ] && rm -f $RDIR/build/ramdisk/g935x/split_img/boot.img-zImage
-[ -d "$RDIR/arch/arm64/boot/dtb" ] && rm -rf $RDIR/arch/arm64/boot/dtb
-[ -f "$RDIR/build/zip/g930x/boot.img" ] && rm -f $RDIR/build/zip/g930x/boot.img
-[ -f "$RDIR/build/zip/g935x/boot.img" ] && rm -f $RDIR/build/zip/g935x/boot.img
-[ -f "$RDIR/build/zip/g93xx/g930x.img" ] && rm -f $RDIR/build/zip/g93xx/g930x.img
-[ -f "$RDIR/build/zip/g93xx/g935x.img" ] && rm -f $RDIR/build/zip/g93xx/g935x.img
-[ -f "$RDIR/build/boot.img" ] && rm -f $RDIR/build/boot.img
+rm -rf $RDIR/arch/arm64/boot/dtb
 rm -f $RDIR/arch/$ARCH/boot/dts/*.dtb
 rm -f $RDIR/arch/$ARCH/boot/boot.img-dtb
 rm -f $RDIR/arch/$ARCH/boot/boot.img-zImage
+rm -f $RDIR/build/build.log
+rm -f $RDIR/build/boot.img
 rm -f $RDIR/build/*.zip
+rm -f $RDIR/build/ramdisk/g930x/image-new.img
+rm -f $RDIR/build/ramdisk/g930x/ramdisk-new.cpio.gz
+rm -f $RDIR/build/ramdisk/g930x/split_img/boot.img-dtb
+rm -f $RDIR/build/ramdisk/g930x/split_img/boot.img-zImage
+rm -f $RDIR/build/ramdisk/g930x/image-new.img
+rm -f $RDIR/build/ramdisk/g935x/ramdisk-new.cpio.gz
+rm -f $RDIR/build/ramdisk/g935x/split_img/boot.img-dtb
+rm -f $RDIR/build/ramdisk/g935x/split_img/boot.img-zImage
 rm -f $RDIR/build/zip/g930x/*.zip
+rm -f $RDIR/build/zip/g930x/*.img
 rm -f $RDIR/build/zip/g935x/*.zip
+rm -f $RDIR/build/zip/g935x/*.img
 rm -f $RDIR/build/zip/g93xx/*.zip
+rm -f $RDIR/build/zip/g93xx/*.img
 echo "" > $RDIR/build/ramdisk/g930x/ramdisk/data/.placeholder
 echo "" > $RDIR/build/ramdisk/g930x/ramdisk/dev/.placeholder
 echo "" > $RDIR/build/ramdisk/g930x/ramdisk/lib/modules/.placeholder
@@ -217,24 +216,40 @@ echo ""
 if [[ $prompt == "1" ]]; then
 	MODEL=herolte
 	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
+	(
+	START_TIME=`date +%s`
 	FUNC_BUILD_BOOTIMG
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/boot.img
+	END_TIME=`date +%s`
+	let "ELAPSED_TIME=$END_TIME-$START_TIME"
 	echo ""
-	echo "You can now find boot.img in the build folder"
-	echo "You can now find build.log file in the build folder"
+	echo "Total compiling time is $ELAPSED_TIME seconds"
+	echo ""
+	) 2>&1	 | tee -a ./build/build.log
+	echo "You can now find your boot.img in the build folder"
+	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "2" ]]; then
 	MODEL=hero2lte
 	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
+	(
+	START_TIME=`date +%s`
 	FUNC_BUILD_BOOTIMG
 	mv -f $RDIR/build/ramdisk/g935x/image-new.img $RDIR/build/boot.img
+	END_TIME=`date +%s`
+	let "ELAPSED_TIME=$END_TIME-$START_TIME"
 	echo ""
-	echo "You can now find boot.img in the build folder"
-	echo "You can now find build.log file in the build folder"
+	echo "Total compiling time is $ELAPSED_TIME seconds"
+	echo ""
+	) 2>&1	 | tee -a ./build/build.log
+	echo "You can now find your boot.img in the build folder"
+	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "3" ]]; then
 	MODEL=herolte
 	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
+	(
+	START_TIME=`date +%s`
 	FUNC_BUILD_BOOTIMG
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/zip/g930x/boot.img
 	ZIP_DATE=`date +%Y%m%d`
@@ -242,13 +257,20 @@ elif [[ $prompt == "3" ]]; then
 	ZIP_NAME=TGPKernel.G930x.v$VERSION_NUMBER.$ZIP_DATE.zip
 	ZIP_FILE_TARGET=$ZIP_FILE_DIR/$ZIP_NAME
 	FUNC_BUILD_ZIP
+	END_TIME=`date +%s`
+	let "ELAPSED_TIME=$END_TIME-$START_TIME"
 	echo ""
-	echo "You can now find $ZIP_NAME in the build folder"
-	echo "You can now find build.log file in the build folder"
+	echo "Total compiling time is $ELAPSED_TIME seconds"
+	echo ""
+	) 2>&1	 | tee -a ./build/build.log
+	echo "You can now find your .zip file in the build folder"
+	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "4" ]]; then
 	MODEL=hero2lte
 	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
+	(
+	START_TIME=`date +%s`
 	FUNC_BUILD_BOOTIMG
 	mv -f $RDIR/build/ramdisk/g935x/image-new.img $RDIR/build/zip/g935x/boot.img
 	ZIP_DATE=`date +%Y%m%d`
@@ -256,13 +278,20 @@ elif [[ $prompt == "4" ]]; then
 	ZIP_NAME=TGPKernel.G935x.v$VERSION_NUMBER.$ZIP_DATE.zip
 	ZIP_FILE_TARGET=$ZIP_FILE_DIR/$ZIP_NAME
 	FUNC_BUILD_ZIP
+	END_TIME=`date +%s`
+	let "ELAPSED_TIME=$END_TIME-$START_TIME"
 	echo ""
-	echo "You can now find $ZIP_NAME in the build folder"
-	echo "You can now find build.log file in the build folder"
+	echo "Total compiling time is $ELAPSED_TIME seconds"
+	echo ""
+	) 2>&1	 | tee -a ./build/build.log
+	echo "You can now find your .zip file in the build folder"
+	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "5" ]]; then
 	MODEL=herolte
 	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
+	(
+	START_TIME=`date +%s`
 	FUNC_BUILD_BOOTIMG
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/zip/g93xx/g930x.img-save
 	MODEL=hero2lte
@@ -275,9 +304,14 @@ elif [[ $prompt == "5" ]]; then
 	ZIP_NAME=TGPKernel.G93xx.v$VERSION_NUMBER.$ZIP_DATE.zip
 	ZIP_FILE_TARGET=$ZIP_FILE_DIR/$ZIP_NAME
 	FUNC_BUILD_ZIP
+	END_TIME=`date +%s`
+	let "ELAPSED_TIME=$END_TIME-$START_TIME"
 	echo ""
-	echo "You can now find $ZIP_NAME in the build folder"
-	echo "You can now find build.log file in the build folder"
+	echo "Total compiling time is $ELAPSED_TIME seconds"
+	echo ""
+	) 2>&1	 | tee -a ./build/build.log
+	echo "You can now find your .zip file in the build folder"
+	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "6" ]]; then
 	FUNC_CLEAN
