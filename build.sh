@@ -1,12 +1,12 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 v0.4 (optimized from apq8084 kernel source)
 # Modified by djb77 / XDA Developers
-# TGPKernel Script Version: v2.02
+# TGPKernel Script Version: v2.03
 
 # ---------
 # VARIABLES
 # ---------
-BUILD_SCRIPT=2.02
+BUILD_SCRIPT=2.03
 VERSION_NUMBER=$(<build/version)
 ARCH=arm64
 BUILD_CROSS_COMPILE=~/android/toolchains/aarch64-sabermod-7.0/bin/aarch64-
@@ -174,7 +174,6 @@ echo "Building Zip File"
 cd $ZIP_FILE_DIR
 zip -gq $ZIP_NAME -r META-INF/ -x "*~"
 zip -gq $ZIP_NAME -r system/ -x "*~" 
-zip -gq $ZIP_NAME -r data/ -x "*~" 
 zip -gq $ZIP_NAME system_patch.sh -x "*~"
 [ -f "$RDIR/build/zip/g930x/boot.img" ] && zip -gq $ZIP_NAME boot.img -x "*~"
 [ -f "$RDIR/build/zip/g935x/boot.img" ] && zip -gq $ZIP_NAME boot.img -x "*~"
