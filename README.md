@@ -22,7 +22,7 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
-### v2.10 - 2016.09-29
+### v2.10 - 2016-09-29
 - Added CPU Governors
 - Added IO Schedulers
 
