@@ -1,12 +1,12 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 v0.4 (optimized from apq8084 kernel source)
 # Modified by djb77 / XDA Developers
-# TGPKernel Script Version: v2.03
+# TGPKernel Script Version: v2.04
 
 # ---------
 # VARIABLES
 # ---------
-BUILD_SCRIPT=2.03
+BUILD_SCRIPT=2.04
 VERSION_NUMBER=$(<build/version)
 ARCH=arm64
 BUILD_CROSS_COMPILE=~/android/toolchains/aarch64-sabermod-7.0/bin/aarch64-
@@ -207,8 +207,9 @@ echo "1) Build boot.img for S7"
 echo "2) Build boot.img for S7 Edge"
 echo "3) Build boot.img and .zip for S7"
 echo "4) Build boot.img and .zip for S7 Edge"
-echo "5) Build boot.img and .zip for S7 + S7 Edge"
-echo "6) Clean Workspace"
+echo "5) Build boot.img and .zip for S7 + S7 Edge (Seperate)"
+echo "6) Build boot.img and .zip for S7 + S7 Edge (All-In-One)"
+echo "7) Clean Workspace"
 echo ""
 read -p "Please select an option " prompt
 echo ""
@@ -292,6 +293,36 @@ elif [[ $prompt == "5" ]]; then
 	(
 	START_TIME=`date +%s`
 	FUNC_BUILD_BOOTIMG
+	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/zip/g930x/boot.img-save
+	MODEL=hero2lte
+	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
+	FUNC_BUILD_BOOTIMG
+	mv -f $RDIR/build/zip/g930x/boot.img-save $RDIR/build/zip/g930x/boot.img
+	mv -f $RDIR/build/ramdisk/g935x/image-new.img $RDIR/build/zip/g935x/boot.img
+	ZIP_DATE=`date +%Y%m%d`
+	ZIP_FILE_DIR=$RDIR/build/zip/g930x
+	ZIP_NAME=TGPKernel.G930x.v$VERSION_NUMBER.$ZIP_DATE.zip
+	ZIP_FILE_TARGET=$ZIP_FILE_DIR/$ZIP_NAME
+	FUNC_BUILD_ZIP
+	ZIP_FILE_DIR=$RDIR/build/zip/g935x
+	ZIP_NAME=TGPKernel.G935x.v$VERSION_NUMBER.$ZIP_DATE.zip
+	ZIP_FILE_TARGET=$ZIP_FILE_DIR/$ZIP_NAME
+	FUNC_BUILD_ZIP
+	END_TIME=`date +%s`
+	let "ELAPSED_TIME=$END_TIME-$START_TIME"
+	echo ""
+	echo "Total compiling time is $ELAPSED_TIME seconds"
+	echo ""
+	) 2>&1	 | tee -a ./build/build.log
+	echo "You can now find your .zip files in the build folder"
+	echo "You can now find your build.log file in the build folder"
+	echo ""
+elif [[ $prompt == "6" ]]; then
+	MODEL=herolte
+	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
+	(
+	START_TIME=`date +%s`
+	FUNC_BUILD_BOOTIMG
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/zip/g93xx/g930x.img-save
 	MODEL=hero2lte
 	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
@@ -312,7 +343,7 @@ elif [[ $prompt == "5" ]]; then
 	echo "You can now find your .zip file in the build folder"
 	echo "You can now find your build.log file in the build folder"
 	echo ""
-elif [[ $prompt == "6" ]]; then
+elif [[ $prompt == "7" ]]; then
 	FUNC_CLEAN
 fi
 
