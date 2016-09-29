@@ -22,6 +22,10 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v2.10 - 2016.09-29
+- Added CPU Governors
+- Added IO Schedulers
+
 ### v2.00 - 2016-09-25
 - Updated Samsung source to G930FXXU1BPHJ
 - Updated Linux source to 3.18.42
