@@ -16,7 +16,7 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 - The Linux Kernel Archive for the Linux Patches (https://www.kernel.org)
 - Tkkg1994 or all his help with compiling / mods etc.
 - osm0sis for Android Image Kitchen
-- jesec for Sabermod GCC 7.0 ARM64 Kernel Toolchain
+- jesec for Sabermod GCC 7.0 ARM64 Kernel Toolchain and Fingerprint Fix
 - arter97 for regmap_bulk_read fix
 
 
