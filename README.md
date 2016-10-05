@@ -22,6 +22,20 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v2.21 - 2016-10-03
+- Fixed init file in Ramdisk to support F2FS
+
+### v2.20 - 2016-10-02
+- Added Frandom Support
+- Activated powersave Governor
+- Activated joystick_xpad Support
+- Disabled Forced Encryption
+- ISO9660 / Joilet UDF Support
+- NTFS Support
+- F2FS Support
+- NFS Support
+- CFIS Support
+
 ### v2.10 - 2016-09-29
 - Added CPU Governors
 - Added IO Schedulers
