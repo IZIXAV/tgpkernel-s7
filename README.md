@@ -11,16 +11,26 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 - If Java is installed, the .zip files will be automatically signed.
 
 
-## Thanks to the following:
+## Credit and Thanks to the following:
 - Samsung Open Source Release Center for the Source code (http://opensource.samsung.com)
 - The Linux Kernel Archive for the Linux Patches (https://www.kernel.org)
-- Tkkg1994 or all his help with compiling / mods etc.
+- Tkkg1994 or all his help and numerous code samples from his source
 - osm0sis for Android Image Kitchen
 - jesec for Sabermod GCC 7.0 ARM64 Kernel Toolchain and Fingerprint Fix
 - arter97 for regmap_bulk_read fix
+- lyapota for some Governors and Schedulers
 
 
 ## Changelog
+
+### v2.30 - 2016-10-06
+- Disabled CIFS/NFS/ISO9660/Joilet/UDF Filesystems (Revert)
+- Fixed bug in include/linux/cpufreq.h
+- Enabled conservative in CPU Governors
+- A-Z Sorted IO Schedulers in block/makefile
+- Text fix for Lionheart CPU Governor
+- Added more CPU Governers (@Tkkg1994)
+- Added more IO Schedulers (@Tkkg1994)
 
 ### v2.21 - 2016-10-03
 - Fixed init file in Ramdisk to support F2FS
@@ -37,14 +47,14 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 - CFIS Support
 
 ### v2.10 - 2016-09-29
-- Added CPU Governors
-- Added IO Schedulers
+- Added CPU Governors (@lyapota)
+- Added IO Schedulers (@lyapota)
 
 ### v2.00 - 2016-09-25
 - Updated Samsung source to G930FXXU1BPHJ
 - Updated Linux source to 3.18.42
 - Updated Ramdisk to G935FXXU1BPIF
-- Added regmap_bulk_read fix
+- Added regmap_bulk_read fix (@arter97)
 
 ### v1.00 - 2016-09-15
 - Initial Relase
