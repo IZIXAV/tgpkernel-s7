@@ -10,24 +10,6 @@
     "Built with Sabermod GCC 7.0 ARM64 Kernel Toolchain",
     "Samsung Kernel Source: G930FXXU1BPHJ",
     "Linux Kernel Source: 3.18.42",
-    "Activated powersave Governor",
-    "Activated joystick_xpad Support",
-    "Added Frandom Support",
-    "Added init.d",
-    "Added Insecure ADB",
-    "Added regmap_bulk_read fix (@arter97)",
-    "Disabled DM_VERITY",
-    "Disabled Forced File Encryption",
-    "Disabled KNOX",
-    "Disabled TIMA",
-    "Disabled RKP",
-    "Disabled KAP",
-    "Disabled RPMB",
-    "Disabled Secure Storage",
-    "Enabled Lockup Detector",
-    "Enabled rw for /system",
-    "F2FS Support",
-    "NTFS Support",
     {
     "name": "CPU Governors",
     "items": [
@@ -83,7 +65,25 @@
       "vr-iosched",
       "zen-iosched"
     ]
-  }
+  },    
+    "Activated powersave Governor",
+    "Activated joystick_xpad Support",
+    "Added Frandom Support",
+    "Added init.d",
+    "Added Insecure ADB",
+    "Added regmap_bulk_read fix (@arter97)",
+    "Disabled DM_VERITY",
+    "Disabled Forced File Encryption",
+    "Disabled KNOX",
+    "Disabled TIMA",
+    "Disabled RKP",
+    "Disabled KAP",
+    "Disabled RPMB",
+    "Disabled Secure Storage",
+    "Enabled Lockup Detector",
+    "Enabled rw for /system",
+    "F2FS Support",
+    "NTFS Support"
   ],
   "downloads": [
     {
