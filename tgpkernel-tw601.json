@@ -87,12 +87,12 @@
   ],
   "downloads": [
     {
-      "name": "TGPKernel v2.40",
+      "name": "TGPKernel v2.41",
       "description": "<bFor Samsung Galaxy S7 / S7 Edge Variants Only</b>",
-      "url": "https://github.com/djb77/tgpkernel-s7/raw/tw601/build/release/TGPKernel.G93xx.v2.40.20161012.zip",
-      "md5sum": "6ef385acb111c81e918bdf695dfe80be",
+      "url": "https://github.com/djb77/tgpkernel-s7/raw/tw601/build/release/TGPKernel.G93xx.v2.41.20161014.zip",
+      "md5sum": "6d66c39c243806e5b156ebdb74be0b3d",
        "changelog": [
-       "Updated Linux Kernel Source to 3.18.43"
+       "Added SELinux forced enforcing/permissive Patch"
       ]
     }
   ]

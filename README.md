@@ -14,14 +14,20 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 ## Credit and Thanks to the following:
 - Samsung Open Source Release Center for the Source code (http://opensource.samsung.com)
 - The Linux Kernel Archive for the Linux Patches (https://www.kernel.org)
-- Tkkg1994 or all his help and numerous code samples from his source
-- osm0sis for Android Image Kitchen
-- jesec for Sabermod GCC 7.0 ARM64 Kernel Toolchain and Fingerprint Fix
-- arter97 for regmap_bulk_read fix
-- lyapota for some Governors and Schedulers
+- @Tkkg1994 or all his help and numerous code samples from his source
+- @osm0sis for Android Image Kitchen
+- @jesec for Sabermod GCC 7.0 ARM64 Kernel Toolchain and Fingerprint Fix
+- @arter97 for regmap_bulk_read fix
+- @lyapota for some Governors and Schedulers
 
 
 ## Changelog
+
+### v2.41 - 2016-10-14
+Added SELinux forced enforcing/permissive Patch (@jcadduono, @lyapota, @Tkkg1994)
+
+### v2.40 - 2016-10-12
+Updated Linux source to 3.18.43
 
 ### v2.30 - 2016-10-06
 - Disabled CIFS/NFS/ISO9660/Joilet/UDF Filesystems (Revert)
