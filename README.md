@@ -23,6 +23,9 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v2.50 - 2016-10-21
+Updated Ramdisk to G935FXXU1BPJ7
+
 ### v2.41 - 2016-10-14
 Added SELinux forced enforcing/permissive Patch (@jcadduono, @lyapota, @Tkkg1994)
 
