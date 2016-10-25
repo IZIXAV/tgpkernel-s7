@@ -23,14 +23,18 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v2.60 - 2016-10-25
+- Updated Linux source to 3.18.44
+- Fixed up defconfig files
+
 ### v2.50 - 2016-10-21
-Updated Ramdisk to G935FXXU1BPJ7
+- Updated Ramdisk to G935FXXU1BPJ7
 
 ### v2.41 - 2016-10-14
-Added SELinux forced enforcing/permissive Patch (@jcadduono, @lyapota, @Tkkg1994)
+- Added SELinux forced enforcing/permissive Patch (@jcadduono, @lyapota, @Tkkg1994)
 
 ### v2.40 - 2016-10-12
-Updated Linux source to 3.18.43
+- Updated Linux source to 3.18.43
 
 ### v2.30 - 2016-10-06
 - Disabled CIFS/NFS/ISO9660/Joilet/UDF Filesystems (Revert)
