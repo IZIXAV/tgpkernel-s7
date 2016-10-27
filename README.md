@@ -23,6 +23,9 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v3.00 - 2016-10-28
+- Updated Samsung source to G930FDXXU1BPJ7
+
 ### v2.60 - 2016-10-25
 - Updated Linux source to 3.18.44
 - Fixed up defconfig files
