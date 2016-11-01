@@ -18,10 +18,14 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 - @osm0sis for Android Image Kitchen
 - @jesec for Sabermod GCC 7.0 ARM64 Kernel Toolchain and Fingerprint Fix
 - @arter97 for regmap_bulk_read fix
-- @lyapota for some Governors and Schedulers
+- @jcadduono for SELinux Patch
+- @lyapota for some Governors, Schedulers and SELinux Patch
 
 
 ## Changelog
+
+### v3.01 - 2016-11-02
+- Updated Samsung source to G930FDXXU1BPJ7
 
 ### v3.00 - 2016-10-28
 - Updated Samsung source to G930FDXXU1BPJ7
