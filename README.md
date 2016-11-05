@@ -24,6 +24,10 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v3.02 - 2016-11-05
+- Reverted Insecure ADB Patch
+- Enabled TCP Algorithms
+
 ### v3.01 - 2016-11-02
 - Updated Samsung source to G930FDXXU1BPJ7
 
