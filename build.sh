@@ -1,7 +1,7 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 v0.4 (optimized from apq8084 kernel source)
 # Modified by djb77 / XDA Developers
-# TGPKernel Script Version: v2.05
+# TGPKernel Script Version: v2.06
 
 # ---------
 # VARIABLES
@@ -341,7 +341,7 @@ elif [[ $prompt == "6" ]]; then
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
 	) 2>&1	 | tee -a ./build/build.log
-	echo "You can now find your .zip file in the build folder"
+	echo "You can now find your .zip file in the build/release folder"
 	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "7" ]]; then
