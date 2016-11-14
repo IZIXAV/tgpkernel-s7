@@ -24,6 +24,12 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v3.20 - 2016-11-14
+- Updated Samsung source to G930FXXU1BPJG
+
+### v3.11 - 2016-11-11
+- Minor Bugfixes
+
 ### v3.10 - 2016-11-11
 - Updated Samsung source to G935FXXU1BPJE
 - Updated Ramdisk to G935FXXU1BPJG
@@ -33,7 +39,7 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 - Enabled TCP Algorithms
 
 ### v3.01 - 2016-11-02
-- Updated Samsung source to G930FDXXU1BPJ7
+- Properly fixed Insecure ADB
 
 ### v3.00 - 2016-10-28
 - Updated Samsung source to G930FDXXU1BPJ7
