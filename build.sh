@@ -1,12 +1,12 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 v0.4 (optimized from apq8084 kernel source)
 # Modified by djb77 / XDA Developers
-# TGPKernel Script Version: v2.06
+# TGPKernel Script Version: v2.07
 
 # ---------
 # VARIABLES
 # ---------
-BUILD_SCRIPT=2.05
+BUILD_SCRIPT=2.07
 VERSION_NUMBER=$(<build/version)
 ARCH=arm64
 BUILD_CROSS_COMPILE=~/android/toolchains/aarch64-sabermod-7.0/bin/aarch64-
@@ -186,8 +186,7 @@ java -Xmx1024m -jar $RDIR/build/signapk/signapk.jar -w $RDIR/build/signapk/testk
 rm old$ZIP_NAME
 fi
 chmod a+r $ZIP_NAME
-rm -f $RDIR/build/release/TGPKernel*
-mv -f $ZIP_FILE_TARGET $RDIR/build/release/$ZIP_NAME
+mv -f $ZIP_FILE_TARGET $RDIR/build/$ZIP_NAME
 cd $RDIR
 }
 
@@ -264,7 +263,7 @@ elif [[ $prompt == "3" ]]; then
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
 	) 2>&1	 | tee -a ./build/build.log
-	echo "You can now find your .zip file in the build/release folder"
+	echo "You can now find your .zip file in the build folder"
 	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "4" ]]; then
@@ -285,7 +284,7 @@ elif [[ $prompt == "4" ]]; then
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
 	) 2>&1	 | tee -a ./build/build.log
-	echo "You can now find your .zip file in the build/release folder"
+	echo "You can now find your .zip file in the build folder"
 	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "5" ]]; then
@@ -315,7 +314,7 @@ elif [[ $prompt == "5" ]]; then
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
 	) 2>&1	 | tee -a ./build/build.log
-	echo "You can now find your .zip files in the build/release folder"
+	echo "You can now find your .zip files in the build folder"
 	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "6" ]]; then
@@ -341,7 +340,7 @@ elif [[ $prompt == "6" ]]; then
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
 	) 2>&1	 | tee -a ./build/build.log
-	echo "You can now find your .zip file in the build/release folder"
+	echo "You can now find your .zip file in the build folder"
 	echo "You can now find your build.log file in the build folder"
 	echo ""
 elif [[ $prompt == "7" ]]; then
