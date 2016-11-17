@@ -24,6 +24,9 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v3.21 - 2016-11-18
+- Fixed Ramdisk issue
+
 ### v3.20 - 2016-11-14
 - Updated Samsung source to G930FXXU1BPJG
 
