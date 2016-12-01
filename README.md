@@ -24,6 +24,9 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 ## Changelog
 
+### v3.31 - 2016-12-01
+- Updated Ramdisk to G935FXXU1BPKA
+
 ### v3.30 - 2016-11-30
 - Updated Linux source to 3.18.45
 
