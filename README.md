@@ -1,4 +1,10 @@
 # TGPKernel S7
+
+URL (S7 Forum): http://forum.xda-developers.com/showthread.php?t=3462897
+
+URL (S7 Edge Forum): http://forum.xda-developers.com/showthread.php?t=3501571
+
+
 A Custom Kernel for Samsung Galaxy S7 / S7 Edge, designed to be used with the TGP Custom ROM. 
 The main purpose of this Kernel is to have a stock-like Kernel that runs on G930x (S7) 
 variants, but capable of running the G935x (S7 Edge) Firmware. 
@@ -23,6 +29,9 @@ variants, but capable of running the G935x (S7 Edge) Firmware.
 
 
 ## Changelog
+
+### v3.41 - 2016-12-17
+- Added recommended kernel patch (from Android/Google)
 
 ### v3.40 - 2016-12-16
 - Updated Samsung source to G930FXXU1BPL3
