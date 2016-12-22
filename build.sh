@@ -1,12 +1,12 @@
 #!/bin/bash
 # kernel build script by Tkkg1994 v0.4 (optimized from apq8084 kernel source)
 # Modified by djb77 / XDA Developers
-# TGPKernel Script Version: v2.07
+# TGPKernel Script Version: v2.08
 
 # ---------
 # VARIABLES
 # ---------
-BUILD_SCRIPT=2.07
+BUILD_SCRIPT=2.08
 VERSION_NUMBER=$(<build/version)
 ARCH=arm64
 BUILD_CROSS_COMPILE=~/android/toolchains/aarch64-sabermod-7.0/bin/aarch64-
@@ -32,7 +32,6 @@ rm -rf $RDIR/arch/arm64/boot/dtb
 rm -f $RDIR/arch/$ARCH/boot/dts/*.dtb
 rm -f $RDIR/arch/$ARCH/boot/boot.img-dtb
 rm -f $RDIR/arch/$ARCH/boot/boot.img-zImage
-rm -f $RDIR/build/build.log
 rm -f $RDIR/build/boot.img
 rm -f $RDIR/build/*.zip
 rm -f $RDIR/build/ramdisk/g930x/image-new.img
@@ -214,44 +213,51 @@ echo ""
 read -p "Please select an option " prompt
 echo ""
 if [[ $prompt == "1" ]]; then
+	rm -f $RDIR/build/build.log
 	MODEL=herolte
 	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
-	(
 	START_TIME=`date +%s`
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/boot.img
+	mv -f $RDIR/build/build.log $RDIR/build/build-g930f.log
 	END_TIME=`date +%s`
 	let "ELAPSED_TIME=$END_TIME-$START_TIME"
 	echo ""
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
-	) 2>&1	 | tee -a ./build/build.log
 	echo "You can now find your boot.img in the build folder"
-	echo "You can now find your build.log file in the build folder"
+	echo "You can now find your build-g930f.log file in the build folder"
 	echo ""
 elif [[ $prompt == "2" ]]; then
+	rm -f $RDIR/build/build.log
 	MODEL=hero2lte
 	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
-	(
 	START_TIME=`date +%s`
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/ramdisk/g935x/image-new.img $RDIR/build/boot.img
+	mv -f $RDIR/build/build.log $RDIR/build/build-g935f.log
 	END_TIME=`date +%s`
 	let "ELAPSED_TIME=$END_TIME-$START_TIME"
 	echo ""
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
-	) 2>&1	 | tee -a ./build/build.log
 	echo "You can now find your boot.img in the build folder"
-	echo "You can now find your build.log file in the build folder"
+	echo "You can now find your build-g935f.log file in the build folder"
 	echo ""
 elif [[ $prompt == "3" ]]; then
+	rm -f $RDIR/build/build.log
 	MODEL=herolte
 	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
-	(
 	START_TIME=`date +%s`
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/zip/g930x/boot.img
+	mv -f $RDIR/build/build.log $RDIR/build/build-g930f.log
 	ZIP_DATE=`date +%Y%m%d`
 	ZIP_FILE_DIR=$RDIR/build/zip/g930x
 	ZIP_NAME=TGPKernel.G930x.v$VERSION_NUMBER.$ZIP_DATE.zip
@@ -262,17 +268,19 @@ elif [[ $prompt == "3" ]]; then
 	echo ""
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
-	) 2>&1	 | tee -a ./build/build.log
 	echo "You can now find your .zip file in the build folder"
-	echo "You can now find your build.log file in the build folder"
+	echo "You can now find your build-g930f.log file in the build folder"
 	echo ""
 elif [[ $prompt == "4" ]]; then
+	rm -f $RDIR/build/build.log
 	MODEL=hero2lte
 	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
-	(
 	START_TIME=`date +%s`
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/ramdisk/g935x/image-new.img $RDIR/build/zip/g935x/boot.img
+	mv -f $RDIR/build/build.log $RDIR/build/build-g935f.log
 	ZIP_DATE=`date +%Y%m%d`
 	ZIP_FILE_DIR=$RDIR/build/zip/g935x
 	ZIP_NAME=TGPKernel.G935x.v$VERSION_NUMBER.$ZIP_DATE.zip
@@ -283,22 +291,28 @@ elif [[ $prompt == "4" ]]; then
 	echo ""
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
-	) 2>&1	 | tee -a ./build/build.log
 	echo "You can now find your .zip file in the build folder"
-	echo "You can now find your build.log file in the build folder"
+	echo "You can now find your build-g935f.log file in the build folder"
 	echo ""
 elif [[ $prompt == "5" ]]; then
+	rm -f $RDIR/build/build.log
 	MODEL=herolte
 	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
-	(
 	START_TIME=`date +%s`
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/zip/g930x/boot.img-save
+	mv -f $RDIR/build/build.log $RDIR/build/build-g930f.log
+	rm -f $RDIR/build/build.log
 	MODEL=hero2lte
 	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/zip/g930x/boot.img-save $RDIR/build/zip/g930x/boot.img
 	mv -f $RDIR/build/ramdisk/g935x/image-new.img $RDIR/build/zip/g935x/boot.img
+	mv -f $RDIR/build/build.log $RDIR/build/build-g935f.log
 	ZIP_DATE=`date +%Y%m%d`
 	ZIP_FILE_DIR=$RDIR/build/zip/g930x
 	ZIP_NAME=TGPKernel.G930x.v$VERSION_NUMBER.$ZIP_DATE.zip
@@ -313,22 +327,29 @@ elif [[ $prompt == "5" ]]; then
 	echo ""
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
-	) 2>&1	 | tee -a ./build/build.log
 	echo "You can now find your .zip files in the build folder"
-	echo "You can now find your build.log file in the build folder"
+	echo "You can now find your build-g930f.log file in the build folder"
+	echo "You can now find your build-g935f.log file in the build folder"
 	echo ""
 elif [[ $prompt == "6" ]]; then
+	rm -f $RDIR/build/build.log
 	MODEL=herolte
 	KERNEL_DEFCONFIG=tgpkernel-herolte_defconfig
-	(
 	START_TIME=`date +%s`
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/ramdisk/g930x/image-new.img $RDIR/build/zip/g93xx/g930x.img-save
+	mv -f $RDIR/build/build.log $RDIR/build/build-g930f.log
+	rm -f $RDIR/build/build.log
 	MODEL=hero2lte
 	KERNEL_DEFCONFIG=tgpkernel-hero2lte_defconfig
+	(
 	FUNC_BUILD_BOOTIMG
+	) 2>&1	 | tee -a ./build/build.log
 	mv -f $RDIR/build/zip/g93xx/g930x.img-save $RDIR/build/zip/g93xx/g930x.img
 	mv -f $RDIR/build/ramdisk/g935x/image-new.img $RDIR/build/zip/g93xx/g935x.img
+	mv -f $RDIR/build/build.log $RDIR/build/build-g935f.log
 	ZIP_DATE=`date +%Y%m%d`
 	ZIP_FILE_DIR=$RDIR/build/zip/g93xx
 	ZIP_NAME=TGPKernel.G93xx.v$VERSION_NUMBER.$ZIP_DATE.zip
@@ -339,11 +360,14 @@ elif [[ $prompt == "6" ]]; then
 	echo ""
 	echo "Total compiling time is $ELAPSED_TIME seconds"
 	echo ""
-	) 2>&1	 | tee -a ./build/build.log
 	echo "You can now find your .zip file in the build folder"
-	echo "You can now find your build.log file in the build folder"
+	echo "You can now find your build-g930f.log file in the build folder"
+	echo "You can now find your build-g935f.log file in the build folder"
 	echo ""
 elif [[ $prompt == "7" ]]; then
+	rm -f $RDIR/build/build.log
+	rm -f $RDIR/build/build-g930f.log
+	rm -f $RDIR/build/build-g935f.log
 	FUNC_CLEAN
 fi
 
